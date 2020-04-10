@@ -37,7 +37,7 @@ ind_data <- td %>%
 group_by(subject, activity) %>%
 summarise_all(funs(mean))
 
-
+write.table(ind_data, "independent_tidy_data.txt", row.name=FALSE)
 
 
 
