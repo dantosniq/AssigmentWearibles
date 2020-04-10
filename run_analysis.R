@@ -16,9 +16,11 @@ y <- rbind(y_train, y_test)
 subject <- rbind(subject_train, subject_test)
 masterdata <- cbind(subject, y, x)
 
-td <- masterdata
-select(td,subject, code, contains("mean"), contains("std"))
+td <- masterdata %>%
+select(subject, code, contains("mean"), contains("std"))
+
 td$code <- activities[td$code, 2]
+
 names(td)[2] = "activity"
 names(td)<-gsub("Acc", "Accelerometer", names(td))
 names(td)<-gsub("Gyro", "Gyroscope", names(td))
